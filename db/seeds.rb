@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Cleaning all tasks...'
+Task.destroy_all
+
+puts 'Creting new tasks....'
+odev = { name: 'ödev', content: 'İngilizce 3-4' }
+temizlik = { name: 'telefon et', content: 'cumaya ayarla' }
+
+[odev, temizlik].each do |attributes|
+  task = Task.create!(attributes)
+  puts "Created #{task.name}."
+end
+
+puts 'Finished!'

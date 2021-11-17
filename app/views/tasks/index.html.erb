@@ -1,0 +1,27 @@
+<h1>İşlerim</h1>
+
+<table class="table">
+  <tbody>
+    <% @tasks.each do |task| %>
+      <% if task.done %>
+        <tr>
+          <td><%= task.name %></td>
+          <td><%= task.content %></td>
+          <td><%= task.deadline %></td>
+          <td><%= "Tamamlandı." %></td>
+          <td><%= link_to "Sil", tasks_path(task), method: :delete %></td>
+        </tr>
+        <% else %>
+        <tr>
+          <td><%= task.name %></td>
+          <td><%= task.content %></td>
+          <td><%= task.deadline %></td>
+          <td><%= "Tamamlanmadı." %></td>
+          <td><%= link_to "Sil", tasks_path(task), method: :delete %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Yeni iş ekle", new_task_path %>

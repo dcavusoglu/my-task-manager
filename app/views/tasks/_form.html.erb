@@ -1,0 +1,7 @@
+<h1>Yeni iş ekle</h1>
+<%= simple_form_for @task do |f| %>
+<%= f.input :name %>
+<%= f.input :content %>
+<%= f.input :deadline.strftime("%d/%m/%Y"), as: :date, html5: true %>
+<%= f.button :submit %>
+<% end %>
