@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:delete]
+  #before_action :set_task, only: [:destroy]
 
   def index
     @tasks = Task.all
@@ -15,12 +15,12 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to tasks_path
     else
-      flash[:notice] = 'Aynı isimde bir göreviniz var.'
+      flash[:alert] = 'Aynı isimde bir göreviniz var.'
     end
   end
 
-  def delete
-    @task.destroy
+  def destroy
+    Task.destroy(params[:id])
     redirect_to tasks_path
   end
 

@@ -9,7 +9,13 @@
           <td><%= task.content %></td>
           <td><%= task.deadline %></td>
           <td><%= "Tamamlandı." %></td>
-          <td><%= link_to "Sil", tasks_path(task), method: :delete %></td>
+          <td>
+            <form action="/tasks/<%= task.id %>" method="POST">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="sil"/>
+            </form>
+          </td>
         </tr>
         <% else %>
         <tr>
@@ -17,7 +23,13 @@
           <td><%= task.content %></td>
           <td><%= task.deadline %></td>
           <td><%= "Tamamlanmadı." %></td>
-          <td><%= link_to "Sil", tasks_path(task), method: :delete %></td>
+          <td>
+            <form action="/tasks/<%= task.id %>" method="POST">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="sil"/>
+            </form>
+          </td>
         </tr>
       <% end %>
     <% end %>
